@@ -1,0 +1,29 @@
+package_id: "MT-001"
+package_name: "Runtime Cloud System"
+
+tasks:
+  - id: "MT-001-T00"
+    name: "Runtime node protocol"
+    type: "doc"
+    priority: "P0"
+    status: "TODO"
+    depends_on: []
+    file: "tasks/MT-001-T00_Runtime_Node_Protocol.md"
+
+  - id: "MT-001-RUN01"
+    name: "Runtime baseline structure check"
+    type: "run"
+    priority: "P0"
+    status: "TODO"
+    depends_on:
+      - "MT-001-T00"
+    file: "tasks/MT-001-RUN01_Baseline_Structure_Check.md"
+
+  - id: "MT-001-GATE01"
+    name: "Runtime v0.1 acceptance gate"
+    type: "gate"
+    priority: "P0"
+    status: "TODO"
+    depends_on:
+      - "MT-001-RUN01"
+    file: "tasks/MT-001-GATE01_Acceptance_Gate.md"

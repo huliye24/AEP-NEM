@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aep-protocol"
+version = "0.1.0"
+description = "AI Engineering Package protocol starter: a portable, verifiable work unit format for AI-era engineering tasks."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Raphael Davad" }
+]
+license = { text = "MIT" }
+keywords = ["ai", "engineering", "protocol", "task", "package", "workflow", "agent"]
+dependencies = [
+  "PyYAML>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0"
+]
+
+[project.scripts]
+aep = "aep.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

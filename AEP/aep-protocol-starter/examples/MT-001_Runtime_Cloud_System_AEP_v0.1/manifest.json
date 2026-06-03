@@ -1,0 +1,22 @@
+{
+  "format": "AEP",
+  "format_version": "0.1",
+  "package_id": "MT-001",
+  "package_name": "Runtime Cloud System",
+  "status": "READY",
+  "entry_file": "00_START_HERE.md",
+  "agent_spec": "agent_spec.md",
+  "task_map": "task_map.yaml",
+  "validation": "validation/validation_rules.yaml",
+  "output_dir": "outputs/",
+  "report_dir": "reports/",
+  "created_at": "2026-06-02",
+  "updated_at": "2026-06-02",
+  "upstream_nodes": [],
+  "downstream_nodes": [
+    "MT-002",
+    "MT-003",
+    "MT-005",
+    "MT-006"
+  ]
+}

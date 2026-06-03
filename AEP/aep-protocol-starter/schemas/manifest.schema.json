@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AEP Manifest Schema v0.1",
+  "type": "object",
+  "required": [
+    "format",
+    "format_version",
+    "package_id",
+    "package_name",
+    "status",
+    "entry_file",
+    "agent_spec",
+    "task_map",
+    "validation",
+    "output_dir",
+    "report_dir"
+  ],
+  "properties": {
+    "format": {
+      "const": "AEP"
+    },
+    "format_version": {
+      "type": "string"
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "package_name": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "READY",
+        "ACTIVE",
+        "HOLD",
+        "PARTIAL",
+        "PASS",
+        "FAIL",
+        "ADOPT",
+        "ARCHIVED"
+      ]
+    },
+    "entry_file": {
+      "type": "string"
+    },
+    "agent_spec": {
+      "type": "string"
+    },
+    "task_map": {
+      "type": "string"
+    },
+    "validation": {
+      "type": "string"
+    },
+    "output_dir": {
+      "type": "string"
+    },
+    "report_dir": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

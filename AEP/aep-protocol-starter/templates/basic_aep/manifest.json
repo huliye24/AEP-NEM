@@ -1,0 +1,15 @@
+{
+  "format": "AEP",
+  "format_version": "0.1",
+  "package_id": "{{PACKAGE_ID}}",
+  "package_name": "{{PACKAGE_NAME}}",
+  "status": "DRAFT",
+  "entry_file": "00_START_HERE.md",
+  "agent_spec": "agent_spec.md",
+  "task_map": "task_map.yaml",
+  "validation": "validation/validation_rules.yaml",
+  "output_dir": "outputs/",
+  "report_dir": "reports/",
+  "created_at": "YYYY-MM-DD",
+  "updated_at": "YYYY-MM-DD"
+}

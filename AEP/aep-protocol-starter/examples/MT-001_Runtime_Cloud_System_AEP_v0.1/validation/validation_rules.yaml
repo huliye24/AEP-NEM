@@ -1,0 +1,18 @@
+acceptance:
+  required_outputs:
+    - "reports/node_protocol.md"
+    - "reports/structure_check.md"
+    - "reports/final_report.md"
+    - "outputs/result_summary.json"
+  pass_conditions:
+    - "required_files_exist"
+    - "task_cards_exist"
+    - "validation_rules_exist"
+    - "reports_generated"
+    - "no_critical_rule_violation"
+  fail_conditions:
+    - "missing_manifest"
+    - "missing_agent_spec"
+    - "missing_task_map"
+    - "missing_validation_rules"
+    - "unsafe_operation_detected"

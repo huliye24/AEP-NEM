@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aep-nem.org/schemas/aep.schema.json",
+  "title": "AEP Schema",
+  "description": "Schema for an Atomic Engineering Package metadata document. Supports both the compact AEP template fields and the package manifest fields used by the current repository.",
+  "type": "object",
+  "required": ["aep_id", "title", "status", "version"],
+  "additionalProperties": true,
+  "properties": {
+    "aep_id": {
+      "type": "string",
+      "description": "Unique identifier for this AEP.",
+      "pattern": "^[A-Z][A-Z0-9-]*$",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "READY",
+        "IN_PROGRESS",
+        "BLOCKED",
+        "REVIEW",
+        "ADOPTED",
+        "REJECTED",
+        "ARCHIVED",
+        "draft",
+        "ready",
+        "in_progress",
+        "completed",
+        "failed",
+        "archived"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Legacy package-manifest creation timestamp."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "Creation date or timestamp."
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Legacy package-manifest update timestamp."
+    },
+    "updated_at": {
+      "type": "string",
+      "description": "Update date or timestamp."
+    },
+    "owner": {
+      "type": "string"
+    },
+    "related_nem": {
+      "type": "string"
+    },
+    "related_chain": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical", "LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "unknown", "LOW", "MEDIUM", "HIGH", "UNKNOWN"]
+    },
+    "estimated_effort": {
+      "type": "string"
+    },
+    "context": {
+      "description": "Background and problem context.",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "summary": { "type": "string" },
+            "background": { "type": "string" },
+            "problem": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "objective": {
+      "description": "AEP objective and non-goals.",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "primary": { "type": "string" },
+            "non_goals": {
+              "oneOf": [
+                { "type": "string" },
+                {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/namedItem" }
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/namedItem" }
+    },
+    "execution_steps": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "step": { "type": ["string", "integer"] },
+              "description": { "type": "string" },
+              "expected_result": { "type": "string" }
+            }
+          }
+        ]
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "id": { "type": "string" },
+              "description": { "type": "string" },
+              "required": { "type": "boolean" }
+            }
+          }
+        ]
+      }
+    },
+    "validation_method": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "type": { "type": "string" },
+            "command": { "type": "string" },
+            "manual_review": { "type": ["boolean", "string"] }
+          }
+        }
+      ]
+    },
+    "poew_evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidenceItem" }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "risk": { "type": "string" },
+              "impact": { "type": "string" },
+              "mitigation": { "type": "string" }
+            }
+          }
+        ]
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/namedItem" }
+    },
+    "rollback_plan": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "description": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "next_aep_suggestions": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "title": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          }
+        ]
+      }
+    },
+    "agent_requirements": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "min_context_window": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "os": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["linux", "macos", "windows", "any"]
+          }
+        },
+        "runtime": { "type": "string" }
+      }
+    },
+    "expected_outputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "estimated_duration": {
+      "type": "string"
+    },
+    "max_duration": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "namedItem": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "name": { "type": "string" },
+            "type": { "type": "string" },
+            "path": { "type": "string" },
+            "path_or_source": { "type": "string" },
+            "source": { "type": "string" },
+            "required": { "type": "boolean" }
+          }
+        }
+      ]
+    },
+    "evidenceItem": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "type": { "type": "string" },
+            "path": { "type": "string" },
+            "path_or_ref": { "type": "string" },
+            "description": { "type": "string" },
+            "hash": { "type": "string" }
+          }
+        }
+      ]
+    }
+  }
+}

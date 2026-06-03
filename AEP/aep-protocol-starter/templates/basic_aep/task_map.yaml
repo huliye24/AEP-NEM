@@ -1,0 +1,20 @@
+package_id: "{{PACKAGE_ID}}"
+package_name: "{{PACKAGE_NAME}}"
+
+tasks:
+  - id: "{{PACKAGE_ID}}-T001"
+    name: "Read package and verify structure"
+    type: "check"
+    priority: "P0"
+    status: "TODO"
+    depends_on: []
+    file: "tasks/task_001.md"
+
+  - id: "{{PACKAGE_ID}}-GATE001"
+    name: "Acceptance gate"
+    type: "gate"
+    priority: "P0"
+    status: "TODO"
+    depends_on:
+      - "{{PACKAGE_ID}}-T001"
+    file: "tasks/gate_001.md"

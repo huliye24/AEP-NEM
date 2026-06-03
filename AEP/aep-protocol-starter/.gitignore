@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# AEP outputs
+**/outputs/*
+!**/outputs/README.md
+!**/outputs/.gitkeep
+**/reports/generated/*
+*.aep
+*.zip

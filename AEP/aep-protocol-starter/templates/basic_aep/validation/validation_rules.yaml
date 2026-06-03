@@ -1,0 +1,13 @@
+acceptance:
+  required_outputs:
+    - "reports/structure_check.md"
+    - "reports/final_report.md"
+  pass_conditions:
+    - "required_files_exist"
+    - "required_reports_exist"
+    - "no_critical_rule_violation"
+  fail_conditions:
+    - "missing_manifest"
+    - "missing_task_map"
+    - "missing_validation_rules"
+    - "unsafe_operation_detected"

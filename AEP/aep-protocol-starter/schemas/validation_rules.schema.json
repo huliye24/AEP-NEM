@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AEP Validation Rules Schema v0.1",
+  "type": "object",
+  "required": [
+    "acceptance"
+  ],
+  "properties": {
+    "acceptance": {
+      "type": "object",
+      "properties": {
+        "required_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pass_conditions": {
+          "type": "array"
+        },
+        "fail_conditions": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
