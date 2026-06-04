@@ -1,0 +1,86 @@
+{
+  "seal_id": "SEAL-GENERIC-JSON-001",
+  "aep_id": "AEP-GENERIC-JSON-001",
+  "nem_id": "NEM-GENERIC-001",
+  "project": "generic-example",
+  "version": "v0.1",
+  "status": "HOLD",
+  "function_complete": true,
+  "poew_reference": {
+    "poew_id": "POEW-GENERIC-JSON-001",
+    "poew_file": "poew/POEW_GENERIC_JSON_001.md",
+    "poew_hash": "pending",
+    "execution_timestamp": "2026-06-04T00:00:00Z",
+    "execution_duration_seconds": 42,
+    "environment": "ubuntu-22.04 / python-3.11"
+  },
+  "gate_reference": {
+    "gate_id": "GATE-GENERIC-JSON-001",
+    "gate_file": "gates/GATE_GENERIC_JSON_001.md",
+    "gate_result": "PASS_WITH_LIMITATIONS",
+    "must_stop_triggered": false
+  },
+  "evidence_bundle": {
+    "functional_evidence": [
+      "outputs/generic/result.txt"
+    ],
+    "execution_evidence": [
+      "logs/run_generic_001.log"
+    ],
+    "quality_evidence": [
+      "smoke test passed"
+    ],
+    "integrity_evidence": [
+      "hash pending"
+    ],
+    "risk_evidence": [
+      "regression check pending"
+    ],
+    "downstream_evidence": [
+      "output contract stable but not yet fully validated"
+    ]
+  },
+  "test_summary": {
+    "tests_total": 4,
+    "tests_passed": 3,
+    "tests_failed": 0,
+    "tests_skipped": 1,
+    "success_rate": 0.75,
+    "critical_failures": 0
+  },
+  "artifact_summary": [
+    {
+      "path": "outputs/generic/result.txt",
+      "hash": "pending",
+      "purpose": "Main output"
+    },
+    {
+      "path": "logs/run_generic_001.log",
+      "hash": "pending",
+      "purpose": "Execution evidence"
+    }
+  ],
+  "risk_summary": [
+    {
+      "risk": "Missing regression evidence",
+      "severity": "MEDIUM",
+      "blocking": true,
+      "mitigation": "Run regression suite before Industrial Done."
+    }
+  ],
+  "downstream_dependency_note": "Function is complete but should not be used as an industrial dependency until missing evidence is added.",
+  "reopen_criteria": [
+    "Regression test fails",
+    "Output artifact changes without updated hash",
+    "Downstream AEP reports incompatible output contract"
+  ],
+  "reviewer": "human-reviewer",
+  "seal_decision": {
+    "decision": "HOLD",
+    "decision_reason": "Function complete, closure evidence incomplete.",
+    "approved_by": "",
+    "approved_at": "",
+    "next_status": "EVIDENCE_PENDING"
+  },
+  "timestamp": "2026-06-04T00:00:00Z"
+}

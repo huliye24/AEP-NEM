@@ -32,6 +32,14 @@ A quality checkpoint that determines whether work passes to the next phase. Gate
 
 > Gate decides evolution.
 
+### Seal (AEP Seal Protocol)
+The formal closure layer that checks whether an AEP has complete evidence, accepted gates, known risks, artifact references, and downstream dependency notes.
+
+> Seal closes the work for dependency.
+
+### Industrial Done
+The highest AEP completion state. It means the AEP is implemented, verified, reproducible, documented, risk-bounded, and safe for downstream dependency.
+
 ---
 
 ## Structural concepts
@@ -50,6 +58,12 @@ The primary E-Chain of an E-Organism. All other tracks branch from or merge into
 
 ### Branch Track
 A secondary E-Chain that diverges from a parent track. Used for features, experiments, and fixes.
+
+### NEM-18
+A NEM profile composed of three Plan-6 loops: Build-6, Validate-6, and Harden-6. It is used when a node must become runnable, verified, and reusable before downstream adoption.
+
+### E-Chain 54
+An E-Chain profile composed of three differentiated NEM-18 nodes: Probe, Build, and System. It is used for campaign-level system transitions rather than isolated node work.
 
 ---
 
@@ -82,6 +96,24 @@ A condition defined in the manifest that, if met, causes the AEP to halt immedia
 
 ### Acceptance Criteria
 Must-pass conditions defined in `validation/acceptance_criteria.md`. An AEP cannot pass its Gate without meeting all acceptance criteria.
+
+### Function Complete
+The state where the requested function, artifact, or engineering output exists and can be demonstrated. Function Complete does not mean the AEP is industrially done.
+
+### Evidence Pending
+The state where a function exists but required closure evidence is incomplete.
+
+### Seal Review
+The formal review stage where PoEW, Gate result, logs, tests, artifacts, risks, and downstream dependency notes are checked.
+
+### Seal Complete
+The state where all closure evidence is complete and no blocking risk remains.
+
+### Reopen Required
+The state where an AEP must return to implementation or validation because the closure evidence or quality result is insufficient.
+
+### Seal Report
+The final closure document that records function completion, PoEW reference, Gate result, evidence bundle, artifact summary, risks, downstream dependency note, reopen criteria, and final decision.
 
 ---
 

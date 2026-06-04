@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aep-nem.org/schemas/seal_report.schema.json",
+  "title": "AEP Seal Report",
+  "type": "object",
+  "required": [
+    "seal_id",
+    "aep_id",
+    "status",
+    "function_complete",
+    "poew_reference",
+    "gate_reference",
+    "evidence_bundle",
+    "test_summary",
+    "artifact_summary",
+    "risk_summary",
+    "downstream_dependency_note",
+    "reopen_criteria",
+    "seal_decision",
+    "timestamp"
+  ],
+  "properties": {
+    "seal_id": {
+      "type": "string"
+    },
+    "aep_id": {
+      "type": "string"
+    },
+    "nem_id": {
+      "type": "string"
+    },
+    "e_chain_id": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "HOLD",
+        "PASS",
+        "PASS_WITH_LIMITATIONS",
+        "REOPEN_REQUIRED",
+        "REJECTED"
+      ]
+    },
+    "function_complete": {
+      "type": "boolean"
+    },
+    "poew_reference": {
+      "type": "object",
+      "required": [
+        "poew_id",
+        "poew_file"
+      ],
+      "properties": {
+        "poew_id": {
+          "type": "string"
+        },
+        "poew_file": {
+          "type": "string"
+        },
+        "poew_hash": {
+          "type": "string"
+        },
+        "execution_timestamp": {
+          "type": "string"
+        },
+        "execution_duration_seconds": {
+          "type": "number"
+        },
+        "environment": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "gate_reference": {
+      "type": "object",
+      "required": [
+        "gate_id",
+        "gate_result"
+      ],
+      "properties": {
+        "gate_id": {
+          "type": "string"
+        },
+        "gate_file": {
+          "type": "string"
+        },
+        "gate_result": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "PASS_WITH_LIMITATIONS",
+            "HOLD",
+            "FAIL"
+          ]
+        },
+        "must_stop_triggered": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "evidence_bundle": {
+      "type": "object",
+      "required": [
+        "functional_evidence",
+        "execution_evidence",
+        "quality_evidence",
+        "integrity_evidence",
+        "risk_evidence",
+        "downstream_evidence"
+      ],
+      "properties": {
+        "functional_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "execution_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "quality_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "integrity_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "risk_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "downstream_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "test_summary": {
+      "type": "object",
+      "required": [
+        "tests_total",
+        "tests_passed",
+        "tests_failed",
+        "critical_failures"
+      ],
+      "properties": {
+        "tests_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tests_passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tests_failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tests_skipped": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "success_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "critical_failures": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "artifact_summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "purpose"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "risk_summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "risk",
+          "severity",
+          "blocking"
+        ],
+        "properties": {
+          "risk": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH",
+              "CRITICAL"
+            ]
+          },
+          "blocking": {
+            "type": "boolean"
+          },
+          "mitigation": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "downstream_dependency_note": {
+      "type": "string"
+    },
+    "reopen_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "seal_decision": {
+      "type": "object",
+      "required": [
+        "decision",
+        "decision_reason",
+        "next_status"
+      ],
+      "properties": {
+        "decision": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "PASS_WITH_LIMITATIONS",
+            "HOLD",
+            "REOPEN_REQUIRED",
+            "REJECTED"
+          ]
+        },
+        "decision_reason": {
+          "type": "string"
+        },
+        "approved_by": {
+          "type": "string"
+        },
+        "approved_at": {
+          "type": "string"
+        },
+        "next_status": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

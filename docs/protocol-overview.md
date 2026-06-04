@@ -2,7 +2,7 @@
 
 ## The six-layer architecture
 
-AEP-NEM Protocol defines six interlocking layers:
+AEP-NEM Protocol defines six interlocking layers, with PoEW, Gate, and Seal acting as the evidence and closure system inside the execution path:
 
 ```
 ┌─────────────────────────────────────────┐
@@ -20,8 +20,8 @@ AEP-NEM Protocol defines six interlocking layers:
 │  │  │  │  Packages              │  │  │  │
 │  │  │  └───────────────────────┘  │  │  │
 │  │  │  ┌───────────────────────┐  │  │  │
-│  │  │  │    PoEW + GATES        │  │  │  │
-│  │  │  │  Proof & Verification  │  │  │  │
+│  │  │  │  PoEW + GATE + SEAL    │  │  │  │
+│  │  │  │ Proof, Gate, Closure   │  │  │  │
 │  │  │  └───────────────────────┘  │  │  │
 │  │  └─────────────────────────────┘  │  │
 │  └───────────────────────────────────┘  │
@@ -54,6 +54,8 @@ An evolvable engineering module composed of multiple AEPs. A NEM represents a no
 
 **Full spec:** [`specs/NEM_SPEC.md`](../specs/NEM_SPEC.md)
 
+**NEM-18 profile:** [`specs/NEM_18_SPEC.md`](../specs/NEM_18_SPEC.md)
+
 ### Layer 3: E-Chain — Engineering Chain
 
 A connected sequence of NEMs forming a main track or branch track. E-Chains define:
@@ -64,6 +66,8 @@ A connected sequence of NEMs forming a main track or branch track. E-Chains defi
 - Cross-track dependency resolution
 
 **Full spec:** [`specs/E_CHAIN_SPEC.md`](../specs/E_CHAIN_SPEC.md)
+
+**E-Chain 54 profile:** [`specs/E_CHAIN_54_SPEC.md`](../specs/E_CHAIN_54_SPEC.md)
 
 ### Layer 4: E-Organism — Engineering Organism
 
@@ -97,6 +101,17 @@ A quality checkpoint that determines whether work passes to the next phase. Gate
 
 **Full spec:** [`specs/GATE_SPEC.md`](../specs/GATE_SPEC.md)
 
+### Closure: Seal — Industrial completion
+
+Seal is the closure layer that distinguishes a function that merely exists from work that is safe for downstream dependency.
+
+```text
+Function Complete -> PoEW -> Gate -> Seal Review -> Industrial Done
+```
+
+**Full spec:** [`specs/SEAL_PROTOCOL.md`](../specs/SEAL_PROTOCOL.md)  
+**Industrial done spec:** [`specs/INDUSTRIAL_DONE_SPEC.md`](../specs/INDUSTRIAL_DONE_SPEC.md)
+
 ---
 
 ## The execution flow
@@ -107,10 +122,11 @@ A quality checkpoint that determines whether work passes to the next phase. Gate
 3. AEP is dispatched to an executor (AI / human / cloud)
 4. Executor produces PoEW (Proof of Engineering Work)
 5. Gate evaluates the PoEW against acceptance criteria
-6. If passed: NEM absorbs the AEP and evolves
-7. If failed: AEP is retried, refactored, or redefined
-8. NEM connects into its E-Chain
-9. E-Chain contributes to E-Organism growth
+6. Seal review checks evidence completeness and downstream safety
+7. If passed: NEM absorbs the AEP and evolves
+8. If failed: AEP is retried, refactored, reopened, or redefined
+9. NEM connects into its E-Chain
+10. E-Chain contributes to E-Organism growth
 ```
 
 ---

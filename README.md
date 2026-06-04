@@ -8,7 +8,7 @@
 
 AEP-NEM is a complete AI-native engineering collaboration protocol. It redefines how engineering work is structured, executed, verified, and evolved when AI agents, humans, and automated systems collaborate on complex projects.
 
-### The six core concepts
+### Core concepts
 
 | Layer | Abbrev | Name | Role |
 |---|---|---|---|
@@ -18,10 +18,11 @@ AEP-NEM is a complete AI-native engineering collaboration protocol. It redefines
 | Project whole | **E-Organism** | Engineering Organism | The living project composed of E-Chains |
 | Proof of work | **PoEW** | Proof of Engineering Work | Verifiable evidence that work was done |
 | Quality gate | **Gate** | Evolution Gate | Acceptance checkpoint before next phase |
+| Closure layer | **Seal** | AEP Seal Protocol | Evidence review that moves work from function-complete to industrial-done |
 
 ### One-sentence definition
 
-> AEP is the distributable minimal engineering task package protocol; NEM is the evolvable project node protocol composed of multiple AEPs. PoEW proves the work, Gate decides evolution.
+> AEP is the distributable minimal engineering task package protocol; NEM is the evolvable project node protocol composed of multiple AEPs. PoEW proves the work, Gate decides evolution, and Seal closes the work for downstream dependency.
 
 ---
 
@@ -36,7 +37,9 @@ aep-nem-protocol/
 ├── templates/         # Reusable templates for AEP, NEM, E-Chain, PoEW
 ├── schemas/           # JSON schemas for validation
 ├── examples/          # Real-world examples (moodify/, generic/)
-└── governance/        # Contribution, versioning, multi-center publishing
+├── governance/        # Contribution, versioning, multi-center publishing
+├── tools/             # Reference validation tools
+└── integration_patch/ # Upstream merge snippets and patch notes
 ```
 
 ---
@@ -53,12 +56,50 @@ aep-nem-protocol/
 
 ---
 
+## Industrial closure
+
+AEP-NEM uses a formal Seal Protocol to distinguish ordinary functional completion from industrial-grade closure.
+
+```text
+Function Complete != Seal Complete != Industrial Done
+```
+
+- **Function Complete** means the task output exists.
+- **PoEW** proves the work happened.
+- **Gate** checks quality conditions.
+- **Seal** verifies closure evidence.
+- **Industrial Done** means the AEP can safely become a dependency for future NEM/E-Chain evolution.
+
+Recommended status flow:
+
+```text
+DRAFT
+-> IN_PROGRESS
+-> FUNCTION_COMPLETE
+-> EVIDENCE_PENDING
+-> SEAL_REVIEW
+-> SEAL_COMPLETE
+-> INDUSTRIAL_DONE
+```
+
+See [`specs/SEAL_PROTOCOL.md`](specs/SEAL_PROTOCOL.md), [`specs/INDUSTRIAL_DONE_SPEC.md`](specs/INDUSTRIAL_DONE_SPEC.md), and [`templates/SEAL_REPORT_TEMPLATE.md`](templates/SEAL_REPORT_TEMPLATE.md).
+
+---
+
+## Protocol profiles
+
+- **NEM-18**: a node-level profile that organizes one NEM as three Plan-6 loops: Build, Validate, and Harden. See [`specs/NEM_18_SPEC.md`](specs/NEM_18_SPEC.md).
+- **E-Chain 54**: a campaign-level chain profile composed of Probe NEM-18, Build NEM-18, and System NEM-18. See [`specs/E_CHAIN_54_SPEC.md`](specs/E_CHAIN_54_SPEC.md).
+
+---
+
 ## Status
 
-**Version:** v0.1 Draft
-**Created:** 2026-06-02
+**Version:** v0.2 Draft  
+**Created:** 2026-06-02  
+**Updated:** 2026-06-04
 
-This protocol is in early draft stage. All specs, templates, and schemas are open for feedback, contribution, and real-world testing.
+This protocol is in early draft stage. v0.2 adds industrial closure through Seal, plus NEM-18 and E-Chain 54 profiles for larger AI-native engineering cycles. All specs, templates, and schemas are open for feedback, contribution, and real-world testing.
 
 ---
 

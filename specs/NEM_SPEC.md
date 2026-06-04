@@ -189,3 +189,15 @@ Examples:
   NEM-MRS             # Mood Recommendation System
   NEM-AUTH            # Authentication module
 ```
+
+---
+
+## 11. NEM-18 Profile
+
+For node work that needs stronger industrial closure, a NEM may adopt the NEM-18 profile:
+
+```text
+NEM-18 = Build-6 + Validate-6 + Harden-6
+```
+
+This profile keeps the normal NEM interface and maturity model, but organizes the internal lifecycle into construction, validation, and hardening phases. See [`NEM_18_SPEC.md`](NEM_18_SPEC.md).

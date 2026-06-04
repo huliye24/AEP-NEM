@@ -23,6 +23,8 @@
       "type": "string",
       "enum": [
         "CONCEPT",
+        "DRAFT",
+        "PENDING",
         "EXPERIMENTAL",
         "HOLD",
         "ADOPT",
@@ -30,6 +32,8 @@
         "RELEASED",
         "DEPRECATED",
         "concept",
+        "draft",
+        "pending",
         "experimental",
         "hold",
         "adopt",
@@ -41,6 +45,14 @@
     "version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "nem_profile": {
+      "type": "string",
+      "enum": ["NEM", "NEM-18"],
+      "description": "Optional profile name for specialized NEM lifecycle structures."
+    },
+    "node_formula": {
+      "type": "string"
     },
     "created": {
       "type": "string",
@@ -110,6 +122,23 @@
           }
         }
       ]
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "id": { "type": "string" },
+          "purpose": { "type": "string" },
+          "status": { "type": "string" },
+          "aeps": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/aepRef" }
+          },
+          "gate": {}
+        }
+      }
     },
     "maturity": {
       "type": "string",
@@ -200,6 +229,23 @@
           }
         ]
       }
+    },
+    "seal": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "required": { "type": "boolean" },
+        "report": {
+          "type": ["string", "null"]
+        },
+        "decision": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "next_entry": {
+      "type": "object",
+      "additionalProperties": true
     },
     "risks": {
       "type": "array",

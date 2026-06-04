@@ -127,3 +127,15 @@ E-Chains are NOT Git branches, though they can map to them:
 | History | Evolution log + PoEW | Commit history |
 
 A project may choose to map E-Chains to Git branches, but the protocol does not require it.
+
+---
+
+## 9. E-Chain 54 Profile
+
+For campaign-level work, an E-Chain may adopt the E-Chain 54 profile:
+
+```text
+E-Chain 54 = Probe NEM-18 + Build NEM-18 + System NEM-18
+```
+
+This profile is used when the goal is a system state transition rather than a single node upgrade. See [`E_CHAIN_54_SPEC.md`](E_CHAIN_54_SPEC.md).
